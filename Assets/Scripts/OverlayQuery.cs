@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class OverlayQuery : MonoBehaviour
@@ -32,9 +33,11 @@ public class OverlayQuery : MonoBehaviour
 		{
 			case QueryType.BOX:
 				// <overlay box>
+				//Physics OverlapBox(transform.position, Vector3.one * size * 0.5f, transform.rotation, layerMask);
 				break;
 			case QueryType.SPHERE:
 				// <overlay sphere>
+				//Physics OverlapSphere(transform.position,Size * 0.5f, layerMask);
 				break;
 			default:
 				break;
