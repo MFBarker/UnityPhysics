@@ -1,4 +1,7 @@
 using System.Collections;
+using Mono.Cecil.Cil;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 //RequireComponent(typeof(Rigidbody2D));
@@ -58,8 +61,12 @@ public class ControllerCharacter2D : MonoBehaviour
         if (velocity.x > 0 && !faceRight) Flip();
         if (velocity.x < 0 && !faceRight) Flip();
 
+        // update animator
         animator.SetFloat("Speed", Mathf.Abs(velocity.x));
-        
+        animator.SetBool("Fall", !onGround && velocity.y < -0.1f);
+
+
+
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -98,5 +105,11 @@ public class ControllerCharacter2D : MonoBehaviour
     {
         faceRight = !faceRight;
         spriteRenderer.flipX = faceRight;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(groundTransform.position, groundRadius);
     }
 }
