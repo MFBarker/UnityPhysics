@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+//RequireComponent(typeof(Rigidbody2D));
 public class ControllerCharacter2D : MonoBehaviour
 {
     [SerializeField] float speed;
@@ -14,8 +15,12 @@ public class ControllerCharacter2D : MonoBehaviour
     [SerializeField] Transform groundTransform;
     [SerializeField] LayerMask groundLayerMask;
 
+    [SerializeField] Animator animator;
+    [SerializeField] SpriteRenderer spriteRenderer;
+
     Rigidbody2D rb;
     Vector2 velocity = Vector3.zero;
+    bool faceRight = true;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,6 +42,7 @@ public class ControllerCharacter2D : MonoBehaviour
             {
                 velocity.y += Mathf.Sqrt(jumpHeight * -2 * Physics.gravity.y);
                 StartCoroutine(DoubleJump());
+                animator.SetTrigger("Jump");
             }
         }
         // adjust gravity for jump
@@ -45,6 +51,15 @@ public class ControllerCharacter2D : MonoBehaviour
         if (!onGround && velocity.y > 0 && !Input.GetButton("Jump")) gravityMultiplier = lowJumpRateMultiplier;
 
         velocity.y += Physics.gravity.y * gravityMultiplier * Time.deltaTime;
+
+        //move character
+        rb.velocity = velocity;
+
+        //flip character
+        if (velocity.x > 0 && !faceRight) Flip();
+        if (velocity.x < 0 && !faceRight) Flip();
+
+        animator.SetFloat("Speed", Mathf.Abs(velocity.x));
         
     }
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -78,5 +93,11 @@ public class ControllerCharacter2D : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    private void Flip()
+    {
+        faceRight = !faceRight;
+        spriteRenderer.flipX = faceRight;
     }
 }
