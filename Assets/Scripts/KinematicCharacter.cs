@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class KinematicCharacter : MonoBehaviour
 {
-	[SerializeField] float speed = 5;
-	[SerializeField] float turnRate = 180;
-	[SerializeField] bool isRelative = false;
+	//[SerializeField] float speed = 5;
+	//[SerializeField] float turnRate = 180;
+	//[SerializeField] bool isRelative = false;
 
 	// Update is called once per frame
 	void Update()

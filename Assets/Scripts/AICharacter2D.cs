@@ -207,10 +207,12 @@ public class AICharacter2D : MonoBehaviour, IDamagable
 
     private void CheckEnemySeen()
     {
+        //Check if Enemy is Seen
         enemy = null;
         RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, ((faceRight) ? Vector2.right : Vector2.left), rayDistance, raycastLayerMask);
         if (raycastHit.collider != null && raycastHit.collider.gameObject.CompareTag(enemyTag))
         {
+            //Set Enemy Game Object
             enemy = raycastHit.collider.gameObject;
             Debug.DrawRay(transform.position, ((faceRight) ? Vector2.right : Vector2.left) * rayDistance, Color.red);
         }

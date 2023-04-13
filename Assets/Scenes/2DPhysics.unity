@@ -671,7 +671,7 @@ MonoBehaviour:
   - {fileID: 1256971795}
   - {fileID: 209877208}
   rayDistance: 3
-  enemyTag: 
+  enemyTag: Player
   raycastLayerMask:
     serializedVersion: 2
     m_Bits: 63
@@ -792,7 +792,7 @@ Animator:
   m_GameObject: {fileID: 529992455}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ffa110f8613ed814dafcfe3a399b8d98, type: 2}
+  m_Controller: {fileID: 9100000, guid: f3436fd6088889e48a4e3c90a77e24d3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1153,7 +1153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 939330820}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2162,7 +2162,7 @@ Animator:
   m_GameObject: {fileID: 1566507951}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ffa110f8613ed814dafcfe3a399b8d98, type: 2}
+  m_Controller: {fileID: 9100000, guid: f3436fd6088889e48a4e3c90a77e24d3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2219,9 +2219,10 @@ GameObject:
   - component: {fileID: 2033061847}
   - component: {fileID: 2033061846}
   - component: {fileID: 2033061850}
-  m_Layer: 0
+  - component: {fileID: 2033061851}
+  m_Layer: 3
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2307,7 +2308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033061845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.27, z: 0}
+  m_LocalPosition: {x: 0, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2339,8 +2340,8 @@ MonoBehaviour:
   groundRadius: 0.1
   attackTransform: {fileID: 0}
   attackRadius: 0
-  animator: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  animator: {fileID: 2033061851}
+  spriteRenderer: {fileID: 2033061847}
 --- !u!70 &2033061850
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2357,6 +2358,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!95 &2033061851
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033061845}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00581cdaf91caac4f92f19c0ba042944, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2073470450
 GameObject:
   m_ObjectHideFlags: 0
